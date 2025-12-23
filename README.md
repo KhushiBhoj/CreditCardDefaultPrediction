@@ -36,10 +36,10 @@ The focus is on evaluating accuracy, precision, recall, F1-score, ROC-AUC, and t
 - ROC-AUC: 0.72
 - Class 0 → Precision: 0.82, Recall: 0.97, F1-score: 0.89
 - Class 1 → Precision: 0.71, Recall: 0.24, F1-score: 0.35
-
-Confusion Matrix:
+- Confusion Matrix:
 
 [[3407   97]
+
  [ 761  235]]
 
 
@@ -54,66 +54,39 @@ Confusion Matrix:
 - ReLU activation, dropout regularization, sigmoid output
 
 ### Results:
-
-Accuracy: 0.62
-
-ROC-AUC: 0.68
-
-Class 0 → Precision: 0.90, Recall: 0.58, F1-score: 0.71
-
-Class 1 → Precision: 0.34, Recall: 0.78, F1-score: 0.48
-
-Confusion Matrix:
+- Accuracy: 0.62
+- ROC-AUC: 0.68
+- Class 0 → Precision: 0.90, Recall: 0.58, F1-score: 0.71
+- Class 1 → Precision: 0.34, Recall: 0.78, F1-score: 0.48
+- Confusion Matrix:
 
 [[2030 1474]
+
  [ 220  776]]
 
 
-Observation:
+### Observation:
+- NN improves recall for defaulters significantly
+- Lower overall accuracy because many non-defaulters are misclassified
+- Better at detecting minority class due to SMOTE oversampling
 
-NN improves recall for defaulters significantly
+## Key Insights:
+- Logistic Regression is better for overall accuracy and majority class prediction
+- Neural Network is better at detecting defaulters (minority class) due to SMOTE
+- Trade-off: NN sacrifices accuracy on non-defaulters to maximize recall for defaulters
+- Choice of model depends on business goal:
+  - Minimize false negatives (catch defaulters) → Neural Network
+  - Overall accuracy / simplicity / interpretability → Logistic Regression
 
-Lower overall accuracy because many non-defaulters are misclassified
-
-Better at detecting minority class due to SMOTE oversampling
-
-Comparison & Inferences
-Metric	Logistic Regression	Neural Network
-Accuracy	0.81	0.62
-ROC-AUC	0.72	0.68
-Class 1 Recall	0.24	0.78
-Class 1 Precision	0.71	0.34
-Class 0 Recall	0.97	0.58
-
-Key Insights:
-
-Logistic Regression is better for overall accuracy and majority class prediction
-
-Neural Network is better at detecting defaulters (minority class) due to SMOTE
-
-Trade-off: NN sacrifices accuracy on non-defaulters to maximize recall for defaulters
-
-Choice of model depends on business goal:
-
-Minimize false negatives (catch defaulters) → Neural Network
-
-Overall accuracy / simplicity / interpretability → Logistic Regression
-
-Conclusion
-
+## Conclusion
 In this experiment:
+- Logistic Regression provides a highly accurate and interpretable baseline, but fails to catch most defaulters due to class imbalance
+- Neural Network, trained with SMOTE, improves recall for defaulters significantly, though overall accuracy drops
+- For credit risk management, where catching defaulters is critical, the Neural Network approach is more effective
 
-Logistic Regression provides a highly accurate and interpretable baseline, but fails to catch most defaulters due to class imbalance
+## Future improvements:
+- Tune NN threshold to optimize precision-recall tradeoff
+- Try ensemble methods like XGBoost or Random Forest
+- Feature engineering (payment trends, credit utilization ratios)
 
-Neural Network, trained with SMOTE, improves recall for defaulters significantly, though overall accuracy drops
-
-For credit risk management, where catching defaulters is critical, the Neural Network approach is more effective
-
-Future improvements:
-
-Tune NN threshold to optimize precision-recall tradeoff
-
-Try ensemble methods like XGBoost or Random Forest
-
-Feature engineering (payment trends, credit utilization ratios)
 
