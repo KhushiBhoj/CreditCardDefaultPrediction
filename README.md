@@ -31,7 +31,7 @@ The focus is on evaluating accuracy, precision, recall, F1-score, ROC-AUC, and t
 - Scaled numerical features + one-hot categorical features
 - Evaluated on test set
 
-### Results:
+#### Results:
 - Accuracy: 0.81
 - ROC-AUC: 0.72
 - Class 0 → Precision: 0.82, Recall: 0.97, F1-score: 0.89
@@ -39,7 +39,7 @@ The focus is on evaluating accuracy, precision, recall, F1-score, ROC-AUC, and t
 - Confusion Matrix: [[3407   97] [ 761  235]]
 
 
-### Observation:
+#### Observation:
 - LR has high overall accuracy and identifies most non-defaulters correctly
 - Struggles to detect defaulters (low recall for class 1)
 - Shows the effect of class imbalance
@@ -49,14 +49,14 @@ The focus is on evaluating accuracy, precision, recall, F1-score, ROC-AUC, and t
 - Input: scaled numerical + categorical features
 - ReLU activation, dropout regularization, sigmoid output
 
-### Results:
+#### Results:
 - Accuracy: 0.62
 - ROC-AUC: 0.68
 - Class 0 → Precision: 0.90, Recall: 0.58, F1-score: 0.71
 - Class 1 → Precision: 0.34, Recall: 0.78, F1-score: 0.48
 - Confusion Matrix: [[2030 1474] [ 220  776]]
 
-### Observation:
+#### Observation:
 - NN improves recall for defaulters significantly
 - Lower overall accuracy because many non-defaulters are misclassified
 - Better at detecting minority class due to SMOTE oversampling
@@ -79,6 +79,7 @@ In this experiment:
 - Tune NN threshold to optimize precision-recall tradeoff
 - Try ensemble methods like XGBoost or Random Forest
 - Feature engineering (payment trends, credit utilization ratios)
+
 
 
 
