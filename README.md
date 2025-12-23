@@ -36,11 +36,7 @@ The focus is on evaluating accuracy, precision, recall, F1-score, ROC-AUC, and t
 - ROC-AUC: 0.72
 - Class 0 → Precision: 0.82, Recall: 0.97, F1-score: 0.89
 - Class 1 → Precision: 0.71, Recall: 0.24, F1-score: 0.35
-- Confusion Matrix:
-
-[[3407   97]
-
- [ 761  235]]
+- Confusion Matrix: [[3407   97] [ 761  235]]
 
 
 ### Observation:
@@ -58,12 +54,7 @@ The focus is on evaluating accuracy, precision, recall, F1-score, ROC-AUC, and t
 - ROC-AUC: 0.68
 - Class 0 → Precision: 0.90, Recall: 0.58, F1-score: 0.71
 - Class 1 → Precision: 0.34, Recall: 0.78, F1-score: 0.48
-- Confusion Matrix:
-
-[[2030 1474]
-
- [ 220  776]]
-
+- Confusion Matrix: [[2030 1474] [ 220  776]]
 
 ### Observation:
 - NN improves recall for defaulters significantly
@@ -88,5 +79,6 @@ In this experiment:
 - Tune NN threshold to optimize precision-recall tradeoff
 - Try ensemble methods like XGBoost or Random Forest
 - Feature engineering (payment trends, credit utilization ratios)
+
 
 
