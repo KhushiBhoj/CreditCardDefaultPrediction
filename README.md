@@ -17,37 +17,25 @@ The focus is on evaluating accuracy, precision, recall, F1-score, ROC-AUC, and t
 - Class distribution:
   - Non-default (0) → 3504 samples (~78%)
   - Default (1) → 996 samples (~22%)
+- Challenge: Imbalanced classes → models may bias towards majority class
 
-Challenge: Imbalanced classes → models may bias towards majority class
+## Data Preprocessing
+- Train/Validation/Test Split: 70% train, 15% validation, 15% test
+- Scaling: StandardScaler applied on numerical features after splitting to avoid data leakage
+- Handling imbalance:
+  - Logistic Regression trained on original data (baseline)
+  - Neural Network trained with SMOTE oversampling to balance classes
 
-Data Preprocessing
+## Models
+### Logistic Regression
+- Scaled numerical features + one-hot categorical features
+- Evaluated on test set
 
-Train/Validation/Test Split: 70% train, 15% validation, 15% test
-
-Scaling: StandardScaler applied on numerical features after splitting to avoid data leakage
-
-Handling imbalance:
-
-Logistic Regression trained on original data (baseline)
-
-Neural Network trained with SMOTE oversampling to balance classes
-
-Models
-Logistic Regression
-
-Scaled numerical features + one-hot categorical features
-
-Evaluated on test set
-
-Results:
-
-Accuracy: 0.81
-
-ROC-AUC: 0.72
-
-Class 0 → Precision: 0.82, Recall: 0.97, F1-score: 0.89
-
-Class 1 → Precision: 0.71, Recall: 0.24, F1-score: 0.35
+### Results:
+- Accuracy: 0.81
+- ROC-AUC: 0.72
+- Class 0 → Precision: 0.82, Recall: 0.97, F1-score: 0.89
+- Class 1 → Precision: 0.71, Recall: 0.24, F1-score: 0.35
 
 Confusion Matrix:
 
@@ -55,25 +43,17 @@ Confusion Matrix:
  [ 761  235]]
 
 
-Observation:
+### Observation:
+- LR has high overall accuracy and identifies most non-defaulters correctly
+- Struggles to detect defaulters (low recall for class 1)
+- Shows the effect of class imbalance
 
-LR has high overall accuracy and identifies most non-defaulters correctly
+### Neural Network
+- Fully connected feedforward network
+- Input: scaled numerical + categorical features
+- ReLU activation, dropout regularization, sigmoid output
 
-Struggles to detect defaulters (low recall for class 1)
-
-Shows the effect of class imbalance
-
-Neural Network
-
-Fully connected feedforward network
-
-Input: scaled numerical + categorical features
-
-SMOTE applied to training data to balance classes
-
-ReLU activation, dropout regularization, sigmoid output
-
-Results:
+### Results:
 
 Accuracy: 0.62
 
@@ -136,3 +116,4 @@ Tune NN threshold to optimize precision-recall tradeoff
 Try ensemble methods like XGBoost or Random Forest
 
 Feature engineering (payment trends, credit utilization ratios)
+
